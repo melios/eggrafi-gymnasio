@@ -148,54 +148,62 @@
 <!-- JS -->
 <script type="text/javascript" src="js/change-language-functions.js"></script>
 
+<!-- … το υπόλοιπο HTML … -->
 
-
-<!-- Άλλες φόρτωσεις script, π.χ. change-language-functions.js, κ.λπ. -->
+<!-- JS -->
+<script type="text/javascript" src="js/change-language-functions.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const lang = localStorage.getItem("preferredLanguage") === "english" ? "en" : "gr";
-  // Αν η γλώσσα είναι "english", προσθέτουμε "-en" στο όνομα του αρχείου
-  const url = `question-utils/faq${lang === "en" ? "-en" : ""}.json`;
+  document.addEventListener("DOMContentLoaded", async () => {
+    const lang = localStorage.getItem("preferredLanguage") === "english" ? "en" : "gr";
+    // Εδώ ελέγχουμε αν η γλώσσα είναι "english" για να προσαρμόσουμε το όνομα του αρχείου
+    const url = `question-utils/faq${lang === "en" ? "-en" : ""}.json`;
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log("Loaded FAQ data:", data); // Επαλήθευση τι παίρνεις
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Loaded FAQ data:", data);
 
-    // Έλεγχος αν το data έχει το πεδίο "faqs" και ότι είναι πίνακας
-    if (!data.faqs || !Array.isArray(data.faqs)) {
-      throw new Error("Το JSON δεν έχει το πεδίο 'faqs' ή δεν είναι πίνακας");
+      // Εάν το JSON δεν περιέχει πεδίο "faqs", το μετατρέπουμε σε πίνακα
+      const faqs = data.faqs ? data.faqs : [data];
+
+      const container = document.getElementById("faqContainer");
+      container.style.display = "block";
+
+      faqs.forEach(item => {
+        const btn = document.createElement("button");
+        btn.className = "govgr-accordion__button";
+        btn.textContent = item.question;
+
+        const ans = document.createElement("div");
+        ans.className = "govgr-accordion__content";
+        ans.textContent = item.answer;
+        ans.style.display = "none";
+
+        btn.onclick = () => {
+          ans.style.display = ans.style.display === "none" ? "block" : "none";
+        };
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "govgr-accordion__item";
+        wrapper.append(btn, ans);
+        container.appendChild(wrapper);
+      });
     }
-    const faqs = data.faqs;
-
-    const container = document.getElementById("faqContainer");
-    container.style.display = "block";
-
-    faqs.forEach(item => {
-      const btn = document.createElement("button");
-      btn.className = "govgr-accordion__button";
-      btn.textContent = item.question;
-
-      const ans = document.createElement("div");
-      ans.className = "govgr-accordion__content";
-      ans.textContent = item.answer;
-      ans.style.display = "none";
-
-      btn.onclick = () => {
-        ans.style.display = ans.style.display === "none" ? "block" : "none";
-      };
-
-      const wrapper = document.createElement("div");
-      wrapper.className = "govgr-accordion__item";
-      wrapper.append(btn, ans);
-      container.appendChild(wrapper);
-    });
-  }
-  catch(e) {
-    console.error("FAQ load error:", e);
-  }
-});
+    catch(e) {
+      console.error("FAQ load error:", e);
+    }
+  });
 </script>
-</body>
-</html>
 
+<script>
+  // Add a click event listener to the SVG link
+  const logoLink = document.getElementById("logo-link");
+  logoLink.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent the default link behavior 
+      location.reload(); // Reload the page
+  });
+</script>
+</html>
