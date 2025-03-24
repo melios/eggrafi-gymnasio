@@ -5,8 +5,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title class="language-component" data-component="mainTitle">Εγγραφή μαθητών στο Γυμνάσιο</title>
+
+    <title class="language-component" data-component="mainTitle">Transportation Card</title>
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css" rel="stylesheet" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="@digigov-css_v0.31.0/digigov.css" />
 
@@ -74,16 +77,20 @@
         <div class="govgr-main-wrapper">
             <div class="govgr-grid-column-two-thirds">
                 <h1 class="govgr-heading-xl language-component" data-component="infoTitle" tabindex="3">
-                    Πληροφορίες για την εγγραφή μαθητών στο Γυμνάσιο
+                    Πληροφορίες για την χορήγηση Δελτίων Μετακίνησης ΑΜΕΑ για το 2023
                 </h1>
             </div>
         </div>
 
         <div id="intro">
             <p class="govgr-body" id="intro-box" tabindex="4">
-                <strong data-component="subTitle1" class="language-component">Αυτό το σύστημα θα σας βοηθήσει να ενημερωθείτε για τη διαδικασία εγγραφής μαθητών στο Γυμνάσιο</strong><br /><br />
-                <span data-component="subTitle2" class="language-component">Η διαδικασία δεν απαιτεί πάνω από 10 λεπτά.</span><br /><br />
-                <em data-component="subTitle3" class="language-component">Τα στοιχεία σας δεν θα αποθηκευτούν ή κοινοποιηθούν.</em>
+                <strong data-component="subTitle1" class="language-component">Αυτό το ερωτηματολόγιο μπορεί να σας
+                    βοηθήσει
+                    να βρείτε αν δικαιούστε να λάβετε το Δελτίο Μετακίνησης ΑΜΕΑ.</strong><br /><br />
+                <span data-component="subTitle2" class="language-component">H συμπλήρωση του ερωτηματολογίου δεν απαιτεί
+                    παραπάνω από 10 λεπτά.</span><br /><br />
+                <em data-component="subTitle3" class="language-component">Δεν θα αποθηκεύσουμε ούτε θα μοιραστούμε τις
+                    απαντήσεις σας.</em>
             </p>
             <button class="govgr-btn govgr-btn-primary govgr-btn-cta" id="startBtn" tabindex="5">
                 <span class="language-component" data-component="startBtn">Ας ξεκινήσουμε</span>
@@ -124,8 +131,8 @@
                     <div class="govgr-footer__content">
                         <p class="govgr-footer__licence-description" id="footerData">
                             <span tabindex="19" class="language-component" data-component="footerText">Υλοποίηση για την
-                                εκπόνηση εργασίας από φοιτήτή της Εφαρμοσμένης Πληροφορικής:</span>
-                            <a tabindex="20" href="https://github.com/melios" target="_blank"
+                                εκπόνηση πτυχιακής εργασίας από τις φοιτήτριες της Εφαρμοσμένης Πληροφορικής:</span>
+                            <a tabindex="20" href="https://github.com/ElisavetAmpatzidou" target="_blank"
                                 rel="noreferrer noopener" class="govgr-link"><span class="language-component"
                                     data-component="student1">Αμπατζίδου Ελισάβετ</span>
                                 <span class="govgr-visually-hidden">(ανοίγει σε καινούρια καρτέλα)</span></a>
@@ -147,43 +154,6 @@
 
 <!-- JS -->
 <script type="text/javascript" src="js/change-language-functions.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const lang = localStorage.getItem("preferredLanguage")==="english" ? "en" : "gr";
-  const url = `question-utils/faq${lang==="en"? "-en": ""}.json`;
-
-  try {
-    const res = await fetch(url);
-    const { faqs } = await res.json();
-    const container = document.getElementById("faqContainer");
-    container.style.display = "block";
-
-    faqs.forEach(item => {
-      const btn = document.createElement("button");
-      btn.className = "govgr-accordion__button";
-      btn.textContent = item.question;
-
-      const ans = document.createElement("div");
-      ans.className = "govgr-accordion__content";
-      ans.textContent = item.answer;
-      ans.style.display = "none";
-
-      btn.onclick = () => ans.style.display = ans.style.display==="none" ? "block" : "none";
-
-      const wrapper = document.createElement("div");
-      wrapper.className = "govgr-accordion__item";
-      wrapper.append(btn, ans);
-      container.appendChild(wrapper);
-    });
-  }
-  catch(e) {
-    console.error("FAQ load error:", e);
-  }
-});
-</script>
-
-
-    
 <script>
     // Add a click event listener to the SVG link
     const logoLink = document.getElementById("logo-link");
