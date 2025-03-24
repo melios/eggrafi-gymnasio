@@ -269,5 +269,47 @@
 
   <!-- Το βασικό script για το ερωτηματολόγιο (αν χρειάζεται) -->
   <script src="script.js"></script>
+
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const lang = localStorage.getItem("preferredLanguage") === "english" ? "en" : "gr";
+    const faqPath = `questions-utils/faq${lang === "en" ? "-en" : ""}.json`;
+
+    fetch(faqPath)
+      .then(res => {
+        if (!res.ok) throw new Error(`Failed to load ${faqPath}`);
+        return res.json();
+      })
+      .then(data => {
+        const container = document.getElementById("faqContainer");
+        container.style.display = "block";
+        data.faqs.forEach((item, i) => {
+          const btn = document.createElement("button");
+          btn.className = "govgr-accordion__button";
+          btn.textContent = item.question;
+          btn.setAttribute("aria-expanded", "false");
+
+          const ans = document.createElement("div");
+          ans.className = "govgr-accordion__content";
+          ans.style.display = "none";
+          ans.textContent = item.answer;
+
+          btn.addEventListener("click", () => {
+            const open = btn.getAttribute("aria-expanded")==="true";
+            btn.setAttribute("aria-expanded", !open);
+            ans.style.display = open ? "none" : "block";
+          });
+
+          const wrapper = document.createElement("div");
+          wrapper.className = "govgr-accordion__item";
+          wrapper.append(btn, ans);
+          container.appendChild(wrapper);
+        });
+      })
+      .catch(err => console.error(err));
+  });
+</script>
+
 </body>
 </html>
