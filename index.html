@@ -147,14 +147,27 @@
 
 <!-- JS -->
 <script type="text/javascript" src="js/change-language-functions.js"></script>
+
+
+
+<!-- Άλλες φόρτωσεις script, π.χ. change-language-functions.js, κ.λπ. -->
 <script>
 document.addEventListener("DOMContentLoaded", async () => {
-  const lang = localStorage.getItem("preferredLanguage")==="english" ? "en" : "gr";
-  const url = `question-utils/faq${lang==="en"? "-en": ""}.json`;
+  const lang = localStorage.getItem("preferredLanguage") === "english" ? "en" : "gr";
+  // Αν η γλώσσα είναι "english", προσθέτουμε "-en" στο όνομα του αρχείου
+  const url = `question-utils/faq${lang === "en" ? "-en" : ""}.json`;
 
   try {
-    const res = await fetch(url);
-    const { faqs } = await res.json();
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("Loaded FAQ data:", data); // Επαλήθευση τι παίρνεις
+
+    // Έλεγχος αν το data έχει το πεδίο "faqs" και ότι είναι πίνακας
+    if (!data.faqs || !Array.isArray(data.faqs)) {
+      throw new Error("Το JSON δεν έχει το πεδίο 'faqs' ή δεν είναι πίνακας");
+    }
+    const faqs = data.faqs;
+
     const container = document.getElementById("faqContainer");
     container.style.display = "block";
 
@@ -168,7 +181,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       ans.textContent = item.answer;
       ans.style.display = "none";
 
-      btn.onclick = () => ans.style.display = ans.style.display==="none" ? "block" : "none";
+      btn.onclick = () => {
+        ans.style.display = ans.style.display === "none" ? "block" : "none";
+      };
 
       const wrapper = document.createElement("div");
       wrapper.className = "govgr-accordion__item";
@@ -181,16 +196,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 </script>
-
-
-    
-<script>
-    // Add a click event listener to the SVG link
-    const logoLink = document.getElementById("logo-link");
-    logoLink.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent the default link behavior 
-        location.reload(); // Reload the page
-    });
-</script>
-
+</body>
 </html>
+
