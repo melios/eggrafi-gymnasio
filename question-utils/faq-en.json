@@ -1,36 +1,28 @@
-// This variable contains the FAQs for High School enrollment.
-const faqData = {
-  // Main property: an array of FAQs.
+{
   "faqs": [
     {
-      // FAQ 1: Required documents for enrollment.
       "question": "What documents are required for enrollment in High School?",
       "answer": "The required documents include: the student's birth certificate, elementary school certificate, health card, and a completed enrollment application form."
     },
     {
-      // FAQ 2: Enrollment process.
       "question": "What is the enrollment process?",
       "answer": "The enrollment process involves: gathering all required documents, submitting them to the school's enrollment office, verifying the student's information, and finalizing the enrollment."
     },
     {
-      // FAQ 3: Enrollment deadlines.
       "question": "What are the enrollment deadlines?",
       "answer": "Enrollments are conducted from the 1st to the 30th of June, with the enrollment office operating from 08:00 to 14:00."
     },
     {
-      // FAQ 4: Handling missing or incorrect documents.
       "question": "What should I do if some documents are missing or incorrect?",
       "answer": "In such cases, please contact the school's enrollment office immediately to receive guidance on renewing or correcting the documents."
     },
     {
-      // FAQ 5: Online enrollment option.
       "question": "Is there an online enrollment option?",
       "answer": "No, enrollment is carried out in person at the school's enrollment office."
     },
     {
-      // FAQ 6: Contact information.
       "question": "How can I contact for further assistance?",
       "answer": "You can contact your school's enrollment office by phone or email, as indicated on the official website of the school."
     }
   ]
-};
+}
