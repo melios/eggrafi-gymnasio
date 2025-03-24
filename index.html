@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Εγγραφή Μαθητών στο Γυμνάσιο - Διαλογικό Σύστημα</title>
+  <title class="language-component" data-component="pageTitle">Εγγραφή Μαθητών στο Γυμνάσιο</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <!-- Στοιχείο για αλλαγή γλώσσας: κλικ στο λογότυπο για ανανέωση/μετάφραση -->
+    <!-- Λογότυπο που ενεργοποιεί την αλλαγή γλώσσας (με ανανέωση της σελίδας) -->
     <a href="#" id="logo-link">
-      <!-- Εδώ μπορείς να βάλεις το λογότυπο (π.χ., ένα SVG ή εικόνα) -->
-      <img src="logo.png" alt="Λογότυπο">
+      <img src="logo.png" alt="Logo">
     </a>
-    <h1>Εγγραφή Μαθητών στο Γυμνάσιο</h1>
-    <p>Οδηγός και πληροφορίες για τη διαδικασία εγγραφής μαθητών.</p>
+    <h1 class="language-component" data-component="mainTitle">Εγγραφή Μαθητών στο Γυμνάσιο</h1>
+    <p class="language-component" data-component="infoTitle">Οδηγός και πληροφορίες για τη διαδικασία εγγραφής μαθητών.</p>
   </header>
 
   <main>
@@ -25,20 +24,20 @@
   </main>
 
   <footer>
-    <p>© 2025 Πανεπιστήμιο Μακεδονίας - ΠΜΣ Εφαρμοσμένης Πληροφορικής</p>
+    <p class="language-component" data-component="footerText">© 2025 Πανεπιστήμιο Μακεδονίας - ΠΜΣ Εφαρμοσμένης Πληροφορικής</p>
   </footer>
 
-  <!-- JS: Αρχείο για αλλαγή γλώσσας και μετάφραση -->
+  <!-- Δεν αλλάζουμε το change-language-functions.js -->
   <script type="text/javascript" src="js/change-language-functions.js"></script>
   <script>
-    // Προσθέτουμε έναν click event listener στο στοιχείο με id "logo-link"
+    // Προσθέτουμε event listener στο στοιχείο με id "logo-link" για ανανέωση της σελίδας (και εφαρμογή αλλαγής γλώσσας)
     const logoLink = document.getElementById("logo-link");
-    logoLink.addEventListener("click", function(event) {
-      event.preventDefault(); // Αποτρέπει τη προεπιλεγμένη συμπεριφορά του link
-      location.reload();      // Ανανεώνει τη σελίδα, ώστε να εφαρμοστούν οι αλλαγές γλώσσας
+    logoLink.addEventListener("click", function (event) {
+      event.preventDefault(); // Αποτρέπει την προεπιλεγμένη συμπεριφορά του link
+      location.reload();      // Ανανεώνει τη σελίδα για να εφαρμοστεί η αλλαγή γλώσσας
     });
   </script>
-  <!-- Το βασικό script για το chatbox -->
+  <!-- Φόρτωση του script για το chatbox -->
   <script src="script.js"></script>
 </body>
 </html>
