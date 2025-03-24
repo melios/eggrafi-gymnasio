@@ -8,37 +8,19 @@
 </head>
 <body>
   <header>
+    <!-- Στοιχείο για αλλαγή γλώσσας: κλικ στο λογότυπο για ανανέωση/μετάφραση -->
+    <a href="#" id="logo-link">
+      <!-- Εδώ μπορείς να βάλεις το λογότυπο (π.χ., ένα SVG ή εικόνα) -->
+      <img src="logo.png" alt="Λογότυπο">
+    </a>
     <h1>Εγγραφή Μαθητών στο Γυμνάσιο</h1>
-    <p>Οδηγός και πληροφορίες για τη διαδικασία εγγραφής μαθητών σύμφωνα με το ΜΙΤΟΣ.</p>
+    <p>Οδηγός και πληροφορίες για τη διαδικασία εγγραφής μαθητών.</p>
   </header>
 
   <main>
-    <section id="chatbot">
-      <h2>Διαλογικό Σύστημα</h2>
-      <p>Ξεκινήστε τη συνομιλία για να λάβετε όλες τις απαραίτητες πληροφορίες για την εγγραφή.</p>
+    <section id="chatbox">
       <button onclick="startChat()">Έναρξη Συνομιλίας</button>
       <div id="chat-container"></div>
-    </section>
-
-    <section id="faq">
-      <h2>Συχνές Ερωτήσεις</h2>
-      <ul>
-        <li>
-          <strong>Ποια είναι η περίοδος εγγραφής;</strong>
-          <br>
-          Συνήθως οι εγγραφές πραγματοποιούνται μεταξύ 1 και 30 Ιουνίου.
-        </li>
-        <li>
-          <strong>Τι δικαιολογητικά απαιτούνται;</strong>
-          <br>
-          Απαιτούνται πιστοποιητικό γέννησης, βεβαίωση δημοτικού, δελτίο υγείας και συμπληρωμένη αίτηση εγγραφής.
-        </li>
-        <li>
-          <strong>Μπορώ να εγγραφώ online;</strong>
-          <br>
-          Όχι, η εγγραφή πραγματοποιείται δια ζώσης στο εκπαιδευτικό ίδρυμα της περιοχής σας.
-        </li>
-      </ul>
     </section>
   </main>
 
@@ -46,7 +28,17 @@
     <p>© 2025 Πανεπιστήμιο Μακεδονίας - ΠΜΣ Εφαρμοσμένης Πληροφορικής</p>
   </footer>
 
-  <script src="js/script.js"></script>
-
+  <!-- JS: Αρχείο για αλλαγή γλώσσας και μετάφραση -->
+  <script type="text/javascript" src="js/change-language-functions.js"></script>
+  <script>
+    // Προσθέτουμε έναν click event listener στο στοιχείο με id "logo-link"
+    const logoLink = document.getElementById("logo-link");
+    logoLink.addEventListener("click", function(event) {
+      event.preventDefault(); // Αποτρέπει τη προεπιλεγμένη συμπεριφορά του link
+      location.reload();      // Ανανεώνει τη σελίδα, ώστε να εφαρμοστούν οι αλλαγές γλώσσας
+    });
+  </script>
+  <!-- Το βασικό script για το chatbox -->
+  <script src="script.js"></script>
 </body>
 </html>
