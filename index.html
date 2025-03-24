@@ -156,13 +156,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const url = `question-utils/faq${lang==="en"? "-en": ""}.json`;
 
   try {
-    const response = await fetch(url);
-    console.log('FAQ load status:', response.status);
-    if (!response.ok) throw new Error(`Failed to fetch FAQ (${response.status})`);
-    const { faqs } = await response.json();
-
+    const res = await fetch(url);
+    const { faqs } = await res.json();
     const container = document.getElementById("faqContainer");
     container.style.display = "block";
+
     faqs.forEach(item => {
       const btn = document.createElement("button");
       btn.className = "govgr-accordion__button";
@@ -181,11 +179,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       container.appendChild(wrapper);
     });
   }
-  catch(err) {
-    console.error(err);
+  catch(e) {
+    console.error("FAQ load error:", e);
   }
 });
 </script>
+
 
     
 <script>
