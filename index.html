@@ -151,6 +151,31 @@
 <!-- JS -->
 <script type="text/javascript" src="js/change-language-functions.js"></script>
 <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const lang = localStorage.getItem("preferredLanguage")==="english" ? "en" : "gr";
+  const url = `questions-utils/faq${lang==="en"?"-en":""}.json`;
+  const {faqs} = await fetch(url).then(r=>r.json());
+  const container = document.getElementById("faqContainer");
+  container.style.display = "block";
+  faqs.forEach((q,i)=>{
+    const btn=document.createElement("button");
+    btn.className="govgr-accordion__button";
+    btn.textContent=q.question;
+    const ans=document.createElement("div");
+    ans.className="govgr-accordion__content";
+    ans.textContent=q.answer;
+    ans.style.display="none";
+    btn.onclick=()=> ans.style.display = ans.style.display==="none"?"block":"none";
+    const item=document.createElement("div");
+    item.className="govgr-accordion__item";
+    item.append(btn,ans);
+    container.appendChild(item);
+  });
+});
+</script>
+
+    
+<script>
     // Add a click event listener to the SVG link
     const logoLink = document.getElementById("logo-link");
     logoLink.addEventListener("click", function (event) {
