@@ -1,65 +1,58 @@
 [
-    {
-        "id": 0,
-        "question": "Have you issued a transportation card for the disabled before?",
-        "options": ["First time issuing it", "I lost it and want to reissue it", "I lost it for the second time and want to reissue it"]
-    },
-    {
-        "id": 1,
-        "question": "Are you a permanent and legal resident of Greece?",
-        "options": ["Yes", "No"]
-    },
-    {
-        "id": 2,
-        "question": "Which of the following categories do you belong to?",
-        "options": ["Greek citizen", 
-                    "Citizen of EU Member States, and citizens of European Economic Area (EEA) Member States",
-                    "Citizen of countries included in the European Convention ratified by Law 4017/1959 (Government Gazette 246/1959, A')",
-                    "Third-country nationals unable to work due to a work accident on Greek territory, or family members of Greek citizens or EU citizens, as defined in Article 20(2) of Presidential Decree 106/2007 (Government Gazette 135 A'), Article 85(4) of Law 4251/2014 (Government Gazette 80 A'), and Article 31(1) of Law 4540/2018 (Government Gazette 91 A')",
-                    "Recognized refugees permanently residing in Greece, whose stay status in Greece is governed by the provisions of the 1951 Convention relating to the Status of Refugees [Presidential Decree 3989/1959 (Government Gazette 201 A')], as amended by the New York Protocol of 1967 on the Status of Refugees [Law 389/1968 (Government Gazette 125 A')]"
-        ]
-    },
-    {
-        "id": 3,
-        "question": "Do you have a disability rate of 67% and above or are you entitled to the preferential OPEKA benefit?",
-        "options": ["Yes", "No"]
-    },
-    {
-        "id": 4,
-        "question": "Which of the following categories do you belong to?",
-        "options": ["I have a medical certificate",
-                   "I have a decision of the administrative director of an insurance institution or the EFKA (Social Insurance Institute)", 
-                   "Recipient of disability benefits for the disabled people granted by OPEKA (Center for Social Welfare and Solidarity)"
-        ]
-    },
-    {
-        "id": 5,
-        "question": "Which of the following categories do you belong to?",
-        "options": ["Blind or visually impaired with a disability rate of 80% and above",
-                    "Severe and Profound Mental Retardation - Intelligence Quotient below 34, or mental retardation with a disability rate of 80% or more, or pervasive developmental disorders (infantile autism, autism) with a disability rate of 80% or more",
-                   "Any disability of at least 67%"
-        ]
-    },
-    {
-        "id": 6,
-        "question": "Please declare your status below:",
-        "options": ["I am applying for the card myself",
-                   "I am an authorized person of the cardholder",
-                   "I am the guardian of the cardholder"
-        ]
-    },
-    {
-        "id": 7,
-        "question": "Choose for which means of transfer you want the transportation card for the disabled:",
-        "options": ["For long-distance transportation only",
-                   "For all entitlements"
-        ]
-    },
-    {
-        "id": 8,
-        "question": "Choose the category you belong to:",
-        "options": ["Individual income is <strong>less than</strong> 23,000 or family income is <strong>less than</strong> 29,000 (OPEKA income not included)",
-                   "Individual income is <strong>greater than</strong> 23,000 or family income is <strong>greater than</strong> 29,000 (OPEKA income not included)"
-        ]
-    }
+  {
+    "id": "start",
+    "text": "Welcome to the official platform of the Electronic Governance System (NG0204) for High School Enrollment. Please select the section for which you would like to receive detailed information.",
+    "options": [
+      { "text": "Required Documents and Prerequisites", "next": "documents" },
+      { "text": "Enrollment Procedure", "next": "process" },
+      { "text": "Deadlines, Cost, and Exceptions", "next": "deadlines" },
+      { "text": "Special Cases (Student Transfer from Abroad)", "next": "external" },
+      { "text": "Legal Framework and Contact Information", "next": "contact" }
+    ]
+  },
+  {
+    "id": "documents",
+    "text": "To complete the enrollment process for High School, the following documents are required:\n\n• Original elementary school certificate or an equivalency certificate (for students who have completed elementary education).\n• Proof of permanent residence.\n• Identification document of the student (a photocopy of the identity card or a municipal certificate).\n• (If applicable) A sworn declaration from the guardian, as mandated by the relevant regulations.",
+    "options": [
+      { "text": "Return to Main Menu", "next": "start" },
+      { "text": "Next: Enrollment Procedure", "next": "process" }
+    ]
+  },
+  {
+    "id": "process",
+    "text": "The official enrollment procedure includes the following steps:\n\n1. Submission of the required documents at the designated school office or the Secondary Education Directorate.\n2. Verification and registration of the student’s data in the official information system (e.g., mySchool).\n3. Finalization of the enrollment process and issuance of an official enrollment certificate.\n\nThis process is carried out automatically for students under the age of 16.",
+    "options": [
+      { "text": "Return to Main Menu", "next": "start" },
+      { "text": "Next: Deadlines and Cost", "next": "deadlines" }
+    ]
+  },
+  {
+    "id": "deadlines",
+    "text": "Enrollments are generally conducted from April 1 to June 30, with document submissions accepted during working hours (08:00 to 14:00). In cases of late enrollment, submission of documents is permitted up to 5 days after the start of classes, subject to official approval by the Director. The service is provided free of charge, except in special cases that require additional evaluation.",
+    "options": [
+      { "text": "Return to Main Menu", "next": "start" },
+      { "text": "Next: Special Cases", "next": "external" }
+    ]
+  },
+  {
+    "id": "external",
+    "text": "In cases where the parent wishes to enroll a student transferring from abroad, please note the following:\n\n• For students transferring from a European Union country, official translations of documents into Greek and authentication by the competent authorities of the country of origin are required.\n• For students from non-EU countries, a detailed evaluation of the documents is necessary, and an additional interview with the competent authorities of the Ministry of Education may be scheduled.\n\nPlease verify your situation and proceed according to the instructions provided by the responsible authority.",
+    "options": [
+      { "text": "Return to Main Menu", "next": "start" },
+      { "text": "Next: Legal Framework and Contact Information", "next": "contact" }
+    ]
+  },
+  {
+    "id": "contact",
+    "text": "For further clarification and support, please contact the following:\n\n• The designated enrollment office of your school.\n• The Secondary Education Directorate of the Ministry of Education.\n• For legal inquiries, please consult the Ministry’s Legal Department and refer to the relevant ministerial decisions (e.g., MD 77231/2022, MD 79942/2019).\nFull contact details are available on the official Ministry of Education website.",
+    "options": [
+      { "text": "Return to Main Menu", "next": "start" },
+      { "text": "End Conversation", "next": "end" }
+    ]
+  },
+  {
+    "id": "end",
+    "text": "Thank you for your inquiry. We hope the provided information will assist you in successfully completing the enrollment process. Best of luck.",
+    "options": []
+  }
 ]
