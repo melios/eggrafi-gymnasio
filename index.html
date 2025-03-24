@@ -153,24 +153,37 @@
 <script>
 document.addEventListener("DOMContentLoaded", async () => {
   const lang = localStorage.getItem("preferredLanguage")==="english" ? "en" : "gr";
-  const url = `question-utils/faq${lang==="en"?"-en":""}.json`;
-  const {faqs} = await fetch(url).then(r=>r.json());
-  const container = document.getElementById("faqContainer");
-  container.style.display = "block";
-  faqs.forEach((q,i)=>{
-    const btn=document.createElement("button");
-    btn.className="govgr-accordion__button";
-    btn.textContent=q.question;
-    const ans=document.createElement("div");
-    ans.className="govgr-accordion__content";
-    ans.textContent=q.answer;
-    ans.style.display="none";
-    btn.onclick=()=> ans.style.display = ans.style.display==="none"?"block":"none";
-    const item=document.createElement("div");
-    item.className="govgr-accordion__item";
-    item.append(btn,ans);
-    container.appendChild(item);
-  });
+  const url = `question-utils/faq${lang==="en"? "-en": ""}.json`;
+
+  try {
+    const response = await fetch(url);
+    console.log('FAQ load status:', response.status);
+    if (!response.ok) throw new Error(`Failed to fetch FAQ (${response.status})`);
+    const { faqs } = await response.json();
+
+    const container = document.getElementById("faqContainer");
+    container.style.display = "block";
+    faqs.forEach(item => {
+      const btn = document.createElement("button");
+      btn.className = "govgr-accordion__button";
+      btn.textContent = item.question;
+
+      const ans = document.createElement("div");
+      ans.className = "govgr-accordion__content";
+      ans.textContent = item.answer;
+      ans.style.display = "none";
+
+      btn.onclick = () => ans.style.display = ans.style.display==="none" ? "block" : "none";
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "govgr-accordion__item";
+      wrapper.append(btn, ans);
+      container.appendChild(wrapper);
+    });
+  }
+  catch(err) {
+    console.error(err);
+  }
 });
 </script>
 
