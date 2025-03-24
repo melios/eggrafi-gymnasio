@@ -62,6 +62,10 @@
                     </svg>
                     <span class="language-component" data-component="languageBtn">EL</span>
                 </button>
+                <!-- Παράδειγμα: Προσθήκη κουμπιού βοήθειας -->
+                <button id="helpBtn" class="govgr-btn govgr-btn-secondary" tabindex="6">
+                <span>Βοήθεια για Άτομα με Ειδικές Ανάγκες</span>
+                </button>
             </div>
         </div>
     </header>
@@ -194,6 +198,22 @@
     }
     catch(e) {
       console.error("FAQ load error:", e);
+    }
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const helpBtn = document.getElementById("helpBtn");
+    if (helpBtn) {
+      helpBtn.addEventListener("click", () => {
+        // Εδώ μπορείς να εμφανίσεις ένα modal ή μια περιοχή βοήθειας
+        alert("Εμφάνιση βοήθειας για άτομα με ειδικές ανάγκες");
+        // Ή αν έχεις ήδη ένα στοιχείο, π.χ.:
+        // document.getElementById("helpSection").style.display = "block";
+      });
+    }
+    else {
+      console.error("Δεν βρέθηκε το στοιχείο με id 'helpBtn'");
     }
   });
 </script>
